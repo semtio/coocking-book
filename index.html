@@ -5,68 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Книга рецептов</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f9f9f9;
-        }
-
-        .container {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 500px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        .results {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .results p {
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .error {
-            color: #dc3545;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -78,67 +17,7 @@
         <div class="results" id="results"></div>
     </div>
 
-    <script>
-        // Пример локальной базы данных рецептов
-        const recipes = [
-            {
-                title: "Яичница с помидорами",
-                ingredients: ["яйца", "помидоры", "масло"],
-                instructions: "Смешайте яйца, обжарьте с нарезанными помидорами."
-            },
-            {
-                title: "Блины",
-                ingredients: ["яйца", "молоко", "мука"],
-                instructions: "Смешайте все ингредиенты, обжарьте на сковороде."
-            },
-            {
-                title: "Салат Цезарь",
-                ingredients: ["курица", "салат", "сыр", "соус"],
-                instructions: "Смешайте курицу, салат, сыр и заправьте соусом."
-            },
-            {
-                title: "Куриный суп",
-                ingredients: ["курица", "морковь", "лук", "картофель"],
-                instructions: "Варите курицу с овощами до готовности."
-            },
-            {
-                title: "Пицца",
-                ingredients: ["мука", "сыр", "помидоры", "ветчина"],
-                instructions: "Испеките тесто, добавьте начинку и запеките."
-            }
-        ];
-
-        function findRecipes() {
-            const input = document.getElementById("ingredients").value.toLowerCase();
-            const resultsDiv = document.getElementById("results");
-
-            if (!input.trim()) {
-                resultsDiv.innerHTML = '<p class="error">Пожалуйста, введите ингредиенты.</p>';
-                return;
-            }
-
-            const keywords = input.split(',').map(word => word.trim());
-            const matchingRecipes = recipes.filter(recipe =>
-                keywords.every(keyword => recipe.ingredients.includes(keyword))
-            );
-
-            if (matchingRecipes.length === 0) {
-                resultsDiv.innerHTML = '<p class="error">Рецепты не найдены.</p>';
-                return;
-            }
-
-            const limitedResults = matchingRecipes.slice(0, 5);
-            resultsDiv.innerHTML = limitedResults
-                .map(recipe => `
-                    <p>
-                        <strong>${recipe.title}</strong><br>
-                        <em>Ингредиенты:</em> ${recipe.ingredients.join(", ")}<br>
-                        <em>Инструкции:</em> ${recipe.instructions}
-                    </p>
-                `)
-                .join("");
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
